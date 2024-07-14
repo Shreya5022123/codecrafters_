@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList.js";
 import Footer from "./components/Footer.js";
 import AddItem from "./components/AddItem";
-// import jeans from "./img/jeans.png";
-// import top from "./img/huddie.jpg";
+import jeans from "./model/jeans.glb";
+import huddie from "./model/huddie.glb";
 
 function App() {
   const products = [
@@ -15,15 +13,16 @@ function App() {
       name: "jeans",
       quantity: 0,
       image: "https://media.sketchfab.com/models/3b74e0d980754027bacbfd17b8dd0260/thumbnails/38a92b0ff82f4181b0648d16a3a2da77/bf1bc932a68c465f910fed1ce2f3a1e8.jpeg", // Example path to image file
+      modelUrl: jeans,
     },
     {
       price: 1000,
       name: "huddie",
       quantity: 0,
       image: "https://media.sketchfab.com/models/bc387203ef184f2dbd25b236945857c5/thumbnails/3a47d6d3aa7a40f1b15dcae4a6c76ab6/fdf8df047b4847babd22a4c7da83d07e.jpeg", // Example path to image file
+      modelUrl: huddie,
     },
   ];
-  
 
   let [productList, setProductList] = useState(products);
   let [totalAmount, setTotalAmount] = useState(0);

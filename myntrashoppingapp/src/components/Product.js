@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import ARCanvas from './ARScene'; // Import ARCanvas component
 
 function Product(props) {
   const [arActive, setArActive] = useState(false);
 
   const handleArView = () => {
-    setArActive(true);
-    // Implement AR view logic here using WebXR and three.js
-    // Example: Load 3D model or scene for the product in AR
-    // Ensure to integrate with WebXR API and three.js for rendering
+    setArActive(!arActive);
   };
 
   return (
@@ -50,7 +48,7 @@ function Product(props) {
           className="btn btn-primary mt-3"
           onClick={handleArView}
         >
-          AR View
+          {arActive ? 'Close AR View' : 'AR View'}
         </button>
         <button
           className="btn btn-danger mt-2"
@@ -64,11 +62,9 @@ function Product(props) {
       <div className="col-6 col-md-2 d-flex align-items-center justify-content-center">
         <h4 className="m-0">Total: ₹{props.product.quantity * props.product.price}</h4>
       </div>
-      {/* Optional: Display AR content based on `arActive` state */}
       {arActive && (
         <div className="col-12 mt-3">
-          {/* Implement AR view content here */}
-          <p>AR view content for {props.product.name}</p>
+          <ARCanvas modelUrl={props.product.modelUrl} /> {/* Pass the model URL */}
         </div>
       )}
     </div>
